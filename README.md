@@ -1,4 +1,4 @@
-Three.js-Geospatial-Mapping
+Three.Geo-Geospatial-Mapping
 ===========================
 
 Extensions to three.js for doing simple geospatial mapping.
