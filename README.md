@@ -96,3 +96,17 @@ To clean the builds from the working directory run:
 
 
 ```
+
+### Class Structure
+
+#### THREE.GEO Namespace
+This project will use the THREE.GEO namespace for each of it's constituent members.
+
+#### [THREE.GEO.Math](https://github.com/scottbyrns/THREE.GEO-Geospatial-Mapping/wiki/Math)
+The Math object will contain static helper methods to calculate geo spatial coordinates and projections.
+
+#### [THREE.GEO.SpatialMap](https://github.com/scottbyrns/THREE.GEO-Geospatial-Mapping/wiki/SpatialMap)
+SpatialMap is the entry point for any new mapping instances. It extends THREE.Mesh and provides some basic mapping extensions.
+
+#### [THREE.GEO.GeoSymbol](https://github.com/scottbyrns/THREE.GEO-Geospatial-Mapping/wiki/GeoSymbol)
+A GeoSymbol is an object representing a geo spatially positioned representation of an a data point or data set. THREE.GEO.GeoSymbol extends THREE.GEO.SpatialMap and can its self have 1:N GeoSymbols added to it.
