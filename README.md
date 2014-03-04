@@ -16,44 +16,6 @@ Extensions to three.js for doing simple geospatial mapping.
 * `build/`                        - The output directory for the build script.
 
 
-##Bulding Project
-
-
-##### Build Script Dependencies
-
-Builds depend on uglify-js to perform minification.
-
-```
-
-sudo npm -g install uglify-js
-
-```
-
-##### Build Script
-
-Once you have uglify-js installed simply run the build script.
-
-```
-
-./build
-
-```
-
-The build will generate a build directory in which you will find minified library.
-
-* `build/`
-	* `three.geo.min.js`          - The THREE.GEO library.
-
-
-##### Build Cleanup
-
-To clean the builds from the working directory run:
-
-```
-
-./build clean
-
-```
 
 ## How To Use
 
@@ -110,3 +72,42 @@ SpatialMap is the entry point for any new mapping instances. It extends THREE.Me
 
 #### [THREE.GEO.GeoSymbol](https://github.com/scottbyrns/THREE.GEO-Geospatial-Mapping/wiki/GeoSymbol)
 A GeoSymbol is an object representing a geo spatially positioned representation of an a data point or data set. THREE.GEO.GeoSymbol extends THREE.GEO.SpatialMap and can its self have 1:N GeoSymbols added to it.
+
+##Bulding Project
+
+
+##### Build Script Dependencies
+
+Builds depend on uglify-js to perform minification.
+
+```
+
+sudo npm -g install uglify-js
+
+```
+
+##### Build Script
+
+Once you have uglify-js installed simply run the build script.
+
+```
+
+./build
+
+```
+
+The build will generate a build directory in which you will find minified library.
+
+* `build/`
+	* `three.geo.min.js`          - The THREE.GEO library.
+
+
+##### Build Cleanup
+
+To clean the builds from the working directory run:
+
+```
+
+./build clean
+
+```
