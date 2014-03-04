@@ -6,19 +6,9 @@ THREE.GEO.SpatialMap = function (config) {
 		
 };
 
-
-// THREE.GEO.SpatialMap.GeoSymbol = function (object, coordinates, scale) {
-// 	this.scale = scale;
-//     this.mesh = object;
-//     this.coordinates = {
-//             phi: coordinates.phi || coordinates.lon,
-//             lambda: coordinates.lambda || coordinates.lat,
-// 			radius: coordinates.radius || coordinates.elevation
-//     }
-// };
-
 THREE.GEO.SpatialMap.prototype = new THREE.Mesh();
 
+// For SpatialMaps used as GeoSymbols you can set the coordinates of the symbol through this method.
 THREE.GEO.SpatialMap.prototype.setCoordinates = function (coordinates) {
     this.coordinates = {
             phi: coordinates.phi,
@@ -27,11 +17,12 @@ THREE.GEO.SpatialMap.prototype.setCoordinates = function (coordinates) {
     }	
 };
 
+// Set the longitudinal offset in degrees to the edge of the texture applied to your geometry.
 THREE.GEO.SpatialMap.prototype.setTexturesEdgeLongitude = function (texture_edge_longitude) {
         this.texture_edge_longitude = texture_edge_longitude;
 };
 
-
+// Set the radius of the spatial map.
 THREE.GEO.SpatialMap.prototype.setRadius = function (radius) {
         this.radius = radius;
 };
