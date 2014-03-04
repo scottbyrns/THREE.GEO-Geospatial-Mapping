@@ -61,38 +61,38 @@ To clean the builds from the working directory run:
 ###Example
 ```javascript
 
-				var map = THREE.ImageUtils.loadTexture( 'textures/earth.jpg' );
-				map.wrapS = map.wrapT = THREE.RepeatWrapping;
-				map.anisotropy = 16;
+	var map = THREE.ImageUtils.loadTexture( 'textures/earth.jpg' );
+	map.wrapS = map.wrapT = THREE.RepeatWrapping;
+	map.anisotropy = 16;
 
-				var material = new THREE.MeshLambertMaterial( { wireframe:false, ambient: 0xFFFFFF, map: map } );
-
-
+	var material = new THREE.MeshLambertMaterial( { wireframe:false, ambient: 0xFFFFFF, map: map } );
 
 
 
-				spatialMap = new THREE.GEO.SpatialMap( new THREE.SphereGeometry( 6378, 200, 100 ), material );
 
-				spatialMap.setRadius(6378);
-				spatialMap.setTexturesEdgeLongitude(-183.806168);
 
-				scene.add( spatialMap );
-				
-				var newYorkCoordinates = {
-					lat: 40.67,
-					lon: -73.9400,
-					elevation: 1 // 1 km
-				};
-				
-				
-				
-				var geoSymbol = new THREE.GEO.GeoSymbol(
-					new THREE.SphereGeometry( 100, 20, 10 ),
-					new THREE.MeshBasicMaterial({ color: 'red' }),
-					newYorkCoordinates
-				);
-				
-				spatialMap.addGeoSymbol(geoSymbol);
+	spatialMap = new THREE.GEO.SpatialMap( new THREE.SphereGeometry( 6378, 200, 100 ), material );
+
+	spatialMap.setRadius(6378);
+	spatialMap.setTexturesEdgeLongitude(-183.806168);
+
+	scene.add( spatialMap );
+	
+	var newYorkCoordinates = {
+		lat: 40.67,
+		lon: -73.9400,
+		elevation: 1 // 1 km
+	};
+	
+	
+	
+	var geoSymbol = new THREE.GEO.GeoSymbol(
+		new THREE.SphereGeometry( 100, 20, 10 ),
+		new THREE.MeshBasicMaterial({ color: 'red' }),
+		newYorkCoordinates
+	);
+	
+	spatialMap.addGeoSymbol(geoSymbol);
 
 
 ```

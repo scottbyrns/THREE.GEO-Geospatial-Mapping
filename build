@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var sys = require('sys')
+var exec = require('child_process').exec;
+
+var args = process.argv.slice(2);
+
+if (args[0] == "clean") {
+
+    exec("rm -rf bin", function (error, stdout, stderr) {});
+    process.exit(0);
+
+}
+
+var min = true;
+if (args[0] == "no-min") {
+	min = false;
+}
+
+exec("rm -rf bin", function (error, stdout, stderr) {
+    exec("mkdir bin", function (error, stdout, stderr) {
+
+        exec("cat src/GEO.js src/GEO.Math.js src/GeoSymbol.js src/SpatialMap.js > bin/three.geo.min.js", function (error, stdout, stderr) {
+
+			if (min) {
+
+                exec("uglifyjs bin/three.geo.min.js -o bin/three.geo.min.js", function (error, stdout, stderr) {
+
+                    exec("cp bin/* demo/js/", function (error, stdout, stderr) {
+
+                    });
+
+                });
+				
+			}
+			else {
+				
+                exec("cp bin/* demo/js/", function (error, stdout, stderr) {});
+
+			}
+
+        });
+
+    });
+});
