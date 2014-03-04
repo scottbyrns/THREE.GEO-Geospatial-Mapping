@@ -1,36 +1,98 @@
-THREE.Geo Geospatial-Mapping
-===========================
+#THREE.Geo Geospatial-Mapping
 
 Extensions to three.js for doing simple geospatial mapping.
 
 
+##Repository Contents
 
-###Usage THREE.GeoSpatialMap
+* `build`			              - The build script for producing the packaged minified scripts.
+
+* `demo/`			              - A number of example implementations of the Quad Tree Sphere
+  * `js/`			              - Scripts used by the demos including the minified version of the THREE.GEO library.
+  * `globe.html`   				  - A simple earth globe with a marker placed over New York state.
+	
+* `src/`                          - The main source files for the project.
+
+* `build/`                        - The output directory for the build script.
+
+
+##Bulding Project
+
+
+##### Build Script Dependencies
+
+Builds depend on uglify-js to perform minification.
+
 ```
 
-var earth = new THREE.GeoSpatialMap(geometry, material);
-earth.setTexturesEdgeLongitude(-180.806168);
+sudo npm -g install uglify-js
 
-for (i = 0; i < continentData.length; i += step) {
-	
-    var lat = continentData[i];
-    var lng = continentData[i + 1];
+```
 
-	var light = new THREE.PointLight(0x0099ff);
-	var plant = new org.good.ecology.Plant();
-	plant.scale.x = plant.scale.y = plant.scale.z = Math.random() * 3;
-	
-	console.log("Adding symbol at: " + lat + " : " + lng);
-	earth.addGeoSymbol(
-		new THREE.GeoSpatialMap.GeoSymbol(plant, {
-			phi: lat,
-			lambda: lng
-		})
-	);
-	
-	
-	plant.lookAt(earth.position);
+##### Build Script
 
-}
+Once you have uglify-js installed simply run the build script.
+
+```
+
+./build
+
+```
+
+The build will generate a build directory in which you will find minified library.
+
+* `build/`
+	* `three.geo.min.js`          - The THREE.GEO library.
+
+
+##### Build Cleanup
+
+To clean the builds from the working directory run:
+
+```
+
+./build clean
+
+```
+
+## How To Use
+
+
+###Example
+```javascript
+
+				var map = THREE.ImageUtils.loadTexture( 'textures/earth.jpg' );
+				map.wrapS = map.wrapT = THREE.RepeatWrapping;
+				map.anisotropy = 16;
+
+				var material = new THREE.MeshLambertMaterial( { wireframe:false, ambient: 0xFFFFFF, map: map } );
+
+
+
+
+
+				spatialMap = new THREE.GEO.SpatialMap( new THREE.SphereGeometry( 6378, 200, 100 ), material );
+
+				spatialMap.setRadius(6378);
+				spatialMap.setTexturesEdgeLongitude(-183.806168);
+
+				scene.add( spatialMap );
+				
+				var newYorkCoordinates = {
+					lat: 40.67,
+					lon: -73.9400,
+					elevation: 1 // 1 km
+				};
+				
+				
+				
+				var geoSymbol = new THREE.GEO.GeoSymbol(
+					new THREE.SphereGeometry( 100, 20, 10 ),
+					new THREE.MeshBasicMaterial({ color: 'red' }),
+					newYorkCoordinates
+				);
+				
+				spatialMap.addGeoSymbol(geoSymbol);
+
 
 ```
